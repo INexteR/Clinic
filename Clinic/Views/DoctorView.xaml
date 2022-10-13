@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Clinic.Views.DoctorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Clinic.Views"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" d:Background="white">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Врачи" FontSize="30" FontStyle="Italic" HorizontalAlignment="Center"/>
+        <TextBlock Text="Запись" FontSize="30" FontStyle="Italic" HorizontalAlignment="Center" Grid.Column="1"/>
+        <ListBox ItemsSource="{Binding Doctors, Mode=OneTime}" SelectedItem="{Binding SelectedDoctor}" Grid.Row="1" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Post}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding FullName}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
+            <TextBlock Text="Врач"/>
+            <TextBox IsReadOnly="True">
+                <TextBox.Text>
+                    <MultiBinding StringFormat="{}{0} - {1}">
+                        <Binding Path="SelectedDoctor.Post"/>
+                        <Binding Path="SelectedDoctor.FullName"/>
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBlock Text="Дата"/>
+            <DatePicker SelectedDate="{Binding DateTime}" DisplayDateStart="{Binding Source={x:Static sys:DateTime.Today}, Mode=OneTime}" DisplayDateEnd="12/31/2022" SelectedDateFormat="Long"/>
+            <Button Content="Записаться" Command="{Binding AddTicket}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

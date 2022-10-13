@@ -1,0 +1,19 @@
+﻿<Window x:Class="Clinic.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clinic"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="341" Width="426" FontSize="18" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="324">
+            <TextBlock Text="ФИО"/>
+            <TextBox x:Name="fio" MaxLength="60"/>
+            <TextBlock Text="Полис"/>
+            <TextBox x:Name="policy" MaxLength="19"/>
+            <Button Content="Войти" FontSize="17" Command="{Binding Enter}" Padding="4 0 4 2"/>
+            <Button Content="Зарегистрироваться" FontSize="17" Command="{Binding Register}" Padding="4 0 4 2"/>
+        </StackPanel>
+    </Grid>
+</Window>
