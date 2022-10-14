@@ -15,7 +15,7 @@ namespace Clinic.ViewModels
             set => Set(ref selectedTicket, value);
         }
         public RelayCommand DeleteTicket { get; }
-        public bool IsDeleteEnabled(object obj)
+        bool IsDeleteEnabled(object obj)
         {
             return selectedTicket != null;
         }

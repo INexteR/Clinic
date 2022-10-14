@@ -122,12 +122,12 @@ namespace Clinic
         {
             RewriteFile();
         }
-        static void RewriteFile()
+        static async void RewriteFile()
         {
             if (rewriteTickets)
             {
                 var ie = tickets.Select(t => string.Join(' ', t.Id, t.Patient.Id, t.Doctor.Id, t.DateTime));
-                File.WriteAllLines(ticketsPath, ie);
+                await File.WriteAllLinesAsync(ticketsPath, ie);
                 rewriteTickets = false;
             }
         }
@@ -189,6 +189,10 @@ namespace Clinic
         public static void SetTicketView()
         {
             main.view.Content = ticketView;
+        }
+        public static object GetContent()
+        {
+            return main.view.Content;
         }
 
         static void Msg(string text, string? title = null, bool showIcn = false)

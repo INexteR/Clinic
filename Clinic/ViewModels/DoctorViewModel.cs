@@ -22,7 +22,7 @@ namespace Clinic.ViewModels
             set => Set(ref dateTime, value);
         }
         public RelayCommand AddTicket { get; }
-        public bool IsAddTicketEnabled(object obj)
+        bool IsAddTicketEnabled(object obj)
         {
             return selectedDoctor != null && dateTime != default;
         }
